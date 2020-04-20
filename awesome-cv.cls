@@ -196,8 +196,11 @@
 \newcommand*{\headerquotestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\itshape\color{darktext} #1}}
 \newcommand*{\footerstyle}[1]{{\fontsize{8pt}{1em}\footerfont\scshape\color{lighttext} #1}}
 \newcommand*{\sectionstyle}[1]{{\fontsize{16pt}{1em}\bodyfont\bfseries\color{text}\@sectioncolor #1}}
+
 \newcommand*{\subsectionstyle}[1]{{\fontsize{12pt}{1em}\bodyfont\scshape\textcolor{text}{#1}}}
 \newcommand*{\paragraphstyle}{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text}}
+\newcommand*{\coverlettersectionstyle}[1]{{\fontsize{14pt}{1em}\bodyfont\bfseries\color{text}\@sectioncolor #1}}
+\newcommand*{\coverlettersection}{\fontsize{14pt}{1em}\bodyfontlight\upshape\color{text}}
 
 % For elements of entry
 \newcommand*{\entrytitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
@@ -225,12 +228,12 @@
 
 % For elements of the cover letter
 \newcommand*{\lettersectionstyle}[1]{{\fontsize{14pt}{1em}\bodyfont\bfseries\color{text}\@ #1}}
-\newcommand*{\recipientaddressstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\scshape\color{graytext} #1}}
-\newcommand*{\recipienttitlestyle}[1]{{\fontsize{11pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\lettertitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfontlight\bfseries\color{darktext} \underline{#1}}}
+\newcommand*{\recipientaddressstyle}[1]{{\fontsize{11pt}{1em}\bodyfont\scshape\color{graytext} #1}}
+\newcommand*{\recipienttitlestyle}[1]{{\fontsize{14pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\newcommand*{\lettertitlestyle}[1]{{\fontsize{12pt}{1em}\bodyfontlight\bfseries\color{darktext} \underline{#1}}}
 \newcommand*{\letterdatestyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
-\newcommand*{\lettertextstyle}{\fontsize{10pt}{1.4em}\bodyfontlight\upshape\color{graytext}}
-\newcommand*{\letternamestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\newcommand*{\lettertextstyle}{\fontsize{14pt}{1.4em}\bodyfontlight\upshape\color{graytext}}
+\newcommand*{\letternamestyle}[1]{{\fontsize{14pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
 \newcommand*{\letterenclosurestyle}[1]{{\fontsize{10pt}{1em}\bodyfontlight\slshape\color{lighttext} #1}}
 
 
@@ -239,7 +242,7 @@
 %-------------------------------------------------------------------------------
 % Define photo ID
 % Usage: \photo[circle|rectangle,edge|noedge,left|right]{<path-to-image>}
-\newcommand{\photo}[2][circle,edge,left]{%
+\newcommand{\photo}[2][rectangle,noedge,right]{%
   \def\@photo{#2}
   \@for\tmp:=#1\do{%
     \ifthenelse{\equal{\tmp}{circle} \or \equal{\tmp}{rectangle}}%
@@ -372,12 +375,12 @@
 \newcommand{\acvHeaderAfterAddressSkip}{-.5mm}
 \newcommand{\acvHeaderIconSep}{\space}
 \newcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
-\newcommand{\acvHeaderAfterSocialSkip}{6mm}
+\newcommand{\acvHeaderAfterSocialSkip}{2mm}
 \newcommand{\acvHeaderAfterQuoteSkip}{5mm}
 
 % Others
-\newcommand{\acvSectionTopSkip}{3mm}
-\newcommand{\acvSectionContentTopSkip}{2.5mm}
+\newcommand{\acvSectionTopSkip}{0mm}
+\newcommand{\acvSectionContentTopSkip}{.5mm}
 
 
 %-------------------------------------------------------------------------------
@@ -400,20 +403,20 @@
 %-------------------------------------------------------------------------------
 % Define a header for CV
 % Usage: \makecvheader
-\newcommand*{\makecvheader}[1][C]{%
-  \newcommand*{\drawphoto}{%
-    \ifthenelse{\isundefined{\@photo}}{}{%
-      \newlength{\photodim}
-      \ifthenelse{\equal{\@photoshape}{circle}}%
-        {\setlength{\photodim}{1.3cm}}%
-        {\setlength{\photodim}{1.8cm}}%
-      \ifthenelse{\equal{\@photoedge}{edge}}%
-        {\def\@photoborder{darkgray}}%
-        {\def\@photoborder{none}}%
-      \begin{tikzpicture}%
-        \node[\@photoshape, draw=\@photoborder, line width=0.3mm, inner sep=\photodim, fill overzoom image=\@photo] () {};
-      \end{tikzpicture}
-    }%
+\newcommand*{\makecvheader}[1][C]{
+  \newcommand*{\drawphoto}{
+     \ifthenelse{\isundefined{\@photo}}{}{%
+       \newlength{\photodim}
+       \ifthenelse{\equal{\@photoshape}{circle}}%
+         {\setlength{\photodim}{1cm}}%
+         {\setlength{\photodim}{1cm}}%
+       \ifthenelse{\equal{\@photoedge}{edge}}%
+         {\def\@photoborder{darkgray}}%
+         {\def\@photoborder{none}}%
+       \begin{tikzpicture}%
+         \node[\@photoshape, draw=\@photoborder, line width=0.3mm, inner sep=\photodim, fill overzoom image=\@photo] () {};
+       \end{tikzpicture}
+    }
   }
   \newlength{\headertextwidth}
   \newlength{\headerphotowidth}
@@ -540,7 +543,7 @@
 % Usage: \cvsubsection{<subsection-title>}
 \newcommand{\cvsubsection}[1]{%
   \vspace{\acvSectionContentTopSkip}
-  \vspace{-3mm}
+  \vspace{-4mm}
   \subsectionstyle{#1}
   \phantomsection
 }
@@ -548,11 +551,11 @@
 % Define a paragraph for CV
 \newenvironment{cvparagraph}{%
   \vspace{\acvSectionContentTopSkip}
-  \vspace{-3mm}
+  \vspace{-2mm}
   \paragraphstyle
 }{%
   \par
-  \vspace{2mm}
+  \vspace{-1mm}
 }
 
 % Define an environment for cventry
@@ -565,9 +568,9 @@
 % Define an entry of cv information
 % Usage: \cventry{<position>}{<title>}{<location>}{<date>}{<description>}
 \newcommand*{\cventry}[5]{%
-  \vspace{-2.0mm}
+  \vspace{-1.5mm}
   \setlength\tabcolsep{0pt}
-  \setlength{\extrarowheight}{0pt}
+  \setlength{\extrarowheight}{-3pt}
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
     \ifempty{#2#3}
       {\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
@@ -622,7 +625,6 @@
 % Define an environment for cvskill
 \newenvironment{cvskills}{%
   \vspace{\acvSectionContentTopSkip}
-  \vspace{-2.0mm}
   \begin{center}
     \setlength\tabcolsep{1ex}
     \setlength{\extrarowheight}{0pt}
@@ -639,9 +641,22 @@
 
 % Define an environment for cvitems(for cventry)
 \newenvironment{cvitems}{%
+  \vspace{-4.5mm}
+  \begin{justify}
+  \begin{itemize}[leftmargin=3ex, nosep, noitemsep]
+    \setlength{\parskip}{0pt}
+    \renewcommand{\labelitemi}{\bullet}
+}{%
+  \end{itemize}
+  \end{justify}
+  \vspace{-4.5mm} % EDIT THIS ONE
+}
+
+% Define an environment for cvitems(for cventry)
+\newenvironment{cvsubitems}{%
   \vspace{-4.0mm}
   \begin{justify}
-  \begin{itemize}[leftmargin=2ex, nosep, noitemsep]
+  \begin{itemize}[leftmargin=4ex, nosep, noitemsep]
     \setlength{\parskip}{0pt}
     \renewcommand{\labelitemi}{\bullet}
 }{%
@@ -662,12 +677,38 @@
 
 % Define a section for the cover letter
 % Usage: \lettersection{<section-title>}
+% \newcommand{\lettersection}[1]{%
+%   \par\addvspace{2.5ex}
+%   \phantomsection{}
+%   \lettersectionstyle{#1}
+%   \color{gray}\vhrulefill{0.9pt}
+%   \par\nobreak\addvspace{0.4ex}
+% }
+
+% \newcommand{\lettersection}[1]{%
+%   \vspace{\acvSectionTopSkip}
+%   \sectionstyle{#1}
+%   \phantomsection
+%   \color{gray}\vhrulefill{0.9pt}
+%   \par\nobreak\addvspace{0.4ex}
+% }
+
 \newcommand{\lettersection}[1]{%
-  \par\addvspace{2.5ex}
-  \phantomsection{}
-  \lettersectionstyle{#1}
+%   \vspace{\acvSectionTopSkip}
+  \coverlettersectionstyle{#1}
+  \coverlettersection
+%   \phantomsection
   \color{gray}\vhrulefill{0.9pt}
-  \par\nobreak\addvspace{0.4ex}
+  \par\nobreak
+}
+
+\newcommand{\lettersectionwithnoline}[1]{%
+%   \vspace{\acvSectionTopSkip}
+  \coverlettersectionstyle{#1}
+  \coverlettersection
+%   \phantomsection
+%   \color{gray}\vhrulefill{0.9pt}
+  \par\nobreak
 }
 
 % Define a title of the cover letter
