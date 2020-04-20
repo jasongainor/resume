@@ -21,7 +21,7 @@
 \documentclass[11pt, a4paper]{awesome-cv}
 
 % Configure page margins with geometry
-\geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
+\geometry{left=1cm, top=.8cm, right=1cm, bottom=1.8cm, footskip=.5cm}
 
 % Specify the location of the included fonts
 \fontdir[fonts/]
@@ -55,16 +55,19 @@
 %	Comment any of the lines below if they are not required
 %-------------------------------------------------------------------------------
 % Available options: circle|rectangle,edge/noedge,left/right
-% \photo[rectangle,edge,right]{profile}
+\photo[rectangle,noedge,right]{jasongainor}
+% \begin{right}
+
 \name{Jason}{Gainor}
-\position{Industrial \& Management Engineer}
+\position{Industrial Engineer{\enskip\cdotp\enskip}Support Engineer{\enskip\cdotp\enskip}UX Designer}
 % \address{246-1002, Gwangmyeongmayrouge Apt. 86, Cheongna lime-ro, Seo-gu, Incheon-si, 404-180, Rep. of KOREA}
 
-\mobile{(+1 518-813-3432) }
+\mobile{(+1) 781-777-3140}
 \email{jasonmgainor@gmail.com}
-\homepage{jasonslingerland.github.com}
-\github{jasonslingerland}
-\linkedin{slingj}
+\homepage{jasongainor.github.io}
+\linkedin{jmgainor}
+
+% \quote{``Be the change that you want to see in the world."}
 
 
 %-------------------------------------------------------------------------------
@@ -72,15 +75,14 @@
 
 % Print the header with above personal informations
 % Give optional argument to change alignment(C: center, L: left, R: right)
-\makecvheader[C]
+\makecvheader[L]
 
 % Print the footer with 3 arguments(<left>, <center>, <right>)
 % Leave any of these blank if they are not needed
 \makecvfooter
   {\today}
   {Jason Gainor~~~·~~~Résumé}
-  {\thepage}
-
+  {}
 
 %-------------------------------------------------------------------------------
 %	CV/RESUME CONTENT
@@ -89,6 +91,6 @@
 \input{resume/summary.tex}
 \input{resume/education.tex}
 \input{resume/experience.tex}
-% \input{resume/projects.tex}
+\input{resume/projects.tex}
 %-------------------------------------------------------------------------------
 \end{document}
