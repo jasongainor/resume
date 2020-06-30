@@ -568,9 +568,9 @@
 % Define an entry of cv information
 % Usage: \cventry{<position>}{<title>}{<location>}{<date>}{<description>}
 \newcommand*{\cventry}[5]{%
-  \vspace{-1.5mm}
+  \vspace{-2.25mm}
   \setlength\tabcolsep{0pt}
-  \setlength{\extrarowheight}{-3pt}
+  \setlength{\extrarowheight}{-4pt}
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
     \ifempty{#2#3}
       {\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
@@ -641,7 +641,7 @@
 
 % Define an environment for cvitems(for cventry)
 \newenvironment{cvitems}{%
-  \vspace{-4.5mm}
+  \vspace{-4.0mm}
   \begin{justify}
   \begin{itemize}[leftmargin=3ex, nosep, noitemsep]
     \setlength{\parskip}{0pt}
@@ -662,7 +662,7 @@
 }{%
   \end{itemize}
   \end{justify}
-  \vspace{-4.0mm}
+  \vspace{-4.5mm}
 }
 
 
@@ -714,7 +714,7 @@
 % Define a title of the cover letter
 % Usage: \makelettertitle
 \newcommand*{\makelettertitle}{%
-  \vspace{8.4mm}
+  \vspace{4mm}
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
